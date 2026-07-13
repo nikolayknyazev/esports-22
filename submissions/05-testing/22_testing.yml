@@ -1,0 +1,541 @@
+opencollection: 1.0.0
+info:
+  name: '22'
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ''
+      port: ''
+      auth:
+        username: ''
+        password: ''
+      bypassProxy: ''
+items:
+  - info:
+      name: Advertisements/probabilities
+      type: http
+      seq: 2
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Advertisements/probabilities'
+      auth: inherit
+    runtime:
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Все компании содержат ожидаемые поля", () => {
+              const body = res.getBody();
+
+              body.forEach(item => {    
+                expect(item).to.have.property("key");
+                expect(item).to.have.property("value");
+              })
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.body
+          operator: length
+          value: '2'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Advertisements/companies
+      type: http
+      seq: 1
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Advertisements/companies'
+      auth: inherit
+    runtime:
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Все поля содержат ожидаемые значения", () => {
+              const body = res.getBody();
+
+              body.forEach(item => {
+                expect(item.id).to.be.a("number");
+                expect(item.name).to.be.a("string");
+                expect(item.advertisementLink).to.be.a("string");
+                expect(item.paymentInfo).to.be.an("array");
+
+                const paymentInfo = item.paymentInfo?.[0];
+                expect(paymentInfo.id).to.be.a("number");
+                expect(paymentInfo.paymentSum).to.be.a("number");
+                expect(paymentInfo.paymentDate).to.be.a("string");
+              })
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.body
+          operator: isNotEmpty
+          value: ''
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: MatchHistory
+      type: http
+      seq: 4
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/MatchHistory/{{tournamentId}}'
+      auth: inherit
+    runtime:
+      variables:
+        - name: tournamentId
+          value: '1'
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Все поля содержат значения", () => {
+              const body = res.getBody();
+
+              body.forEach(item => {   
+                expect(item.id).to.exist;
+                expect(item.winnerId).to.exist;
+                expect(item.loserId).to.exist;
+                expect(item.tournamentId).to.exist;
+                expect(item.date).to.exist;
+                expect(item.winner).to.exist;
+                expect(item.loser).to.exist;
+              })
+            });
+
+            test("Поле 'date' должно быть валидной датой", () => {
+              const body = res.getBody();
+              body.forEach(item => {
+                expect(item.date).to.be.a('string');
+                expect(Date.parse(item.date)).to.not.be.NaN;
+              });
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.headers.date
+          operator: isNotEmpty
+          value: ''
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Players
+      type: http
+      seq: 5
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Players'
+      auth: inherit
+    runtime:
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Каждый объект должен иметь поле 'id'", () => {
+              const body = res.getBody();
+              body.forEach(item => {
+                expect(item).to.have.property('id');
+              });
+            });
+
+            test("У каждого игрока имя соответствует его полному имени", () => {
+              const body = res.getBody();
+              body.forEach(item => {
+                const firstName = item.combinedName.split(' ')[0];
+                expect(item.name).to.contains(firstName);
+              })
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.body
+          operator: isJson
+          value: ''
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Players/filter
+      type: http
+      seq: 6
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Players/filter?filter={"id": 1}'
+      params:
+        - name: filter
+          value: '{"id": 1}'
+          type: query
+      auth: inherit
+    runtime:
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Поле 'country' должно быть строкой", () => {
+              const body = res.getBody();
+              body.forEach(item => {
+                expect(item.country).to.be.a('string');
+              });
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.status
+          operator: neq
+          value: '404'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Ratings/{id}
+      type: http
+      seq: 7
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Ratings/{{id}}'
+      auth: inherit
+    runtime:
+      variables:
+        - name: id
+          value: '1'
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Поле 'score' должно быть числом", () => {
+              const body = res.getBody();
+              body.forEach(item => {
+                expect(item.score).to.be.a('number');
+              });
+            });
+
+            test("Поле 'date' должно быть валидной датой", () => {
+              const body = res.getBody();
+              body.forEach(item => {
+                expect(item.atMoment).to.be.a('string');
+                expect(Date.parse(item.atMoment)).to.not.be.NaN;
+              });
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.headers.server
+          operator: eq
+          value: Kestrel
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Teams
+      type: http
+      seq: 8
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Teams'
+      auth: inherit
+    runtime:
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Каждый объект должен иметь поле 'id'", () => {
+              const body = res.getBody();
+              body.forEach(item => {
+                expect(item).to.have.property('id');
+              });
+            });
+
+            test("Каждая команда должна иметь название", () => {
+              const body = res.getBody();
+              body.forEach(item => {
+                expect(item.name).to.be.a('string');
+              });
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.body
+          operator: length
+          value: '20'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Teams/{id}
+      type: http
+      seq: 9
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Teams/{{id}}'
+      auth: inherit
+    runtime:
+      variables:
+        - name: id
+          value: '1'
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Поле 'players' должно быть массивом и не должно быть пустым", () => {
+              const body = res.getBody();
+              expect(body.players).to.be.an('array').that.is.not.empty;
+            });
+
+            test("Каждый игрок должен иметь поле 'id'", () => {
+              const body = res.getBody();
+              body.players.forEach(item => {
+                expect(item).to.have.property('id');
+              });
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.body.name
+          operator: eq
+          value: Alpha Squad
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Teams/{teamId}/{year}/income
+      type: http
+      seq: 10
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Teams/{{teamId}}/{{year}}/income'
+      auth: inherit
+    runtime:
+      variables:
+        - name: teamId
+          value: '1'
+        - name: year
+          value: '2026'
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Ответ сожердит только цифры", () => {
+              expect(res.getBody()).to.be.a('number');
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.body
+          operator: isNumber
+          value: ''
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Tournaments/last
+      type: http
+      seq: 11
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Tournaments/last'
+      auth: inherit
+    runtime:
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+
+            test("Поля startDate и endDate должны существовать и быть валидными датами", () => {
+              const body = res.getBody();
+              expect(body.startDate).to.not.be.empty;
+              expect(Date.parse(body.startDate)).to.not.be.NaN;
+              expect(body.endDate).to.not.be.empty;
+              expect(Date.parse(body.endDate)).to.not.be.NaN
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.body.teamParticipantInfos
+          operator: isArray
+          value: ''
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+  - info:
+      name: Tournaments/{id}
+      type: http
+      seq: 12
+    http:
+      method: GET
+      url: '{{baseUrl}}/api/Tournaments/{{id}}'
+      auth: inherit
+    runtime:
+      variables:
+        - name: id
+          value: '1'
+      scripts:
+        - type: tests
+          code: |-
+            test("Статус-код должен быть 200", () => {
+              expect(res.getStatus()).to.equal(200);
+            });
+
+            test("Ответ в формате JSON", () => {
+              const header = res.getHeader("content-type");
+              expect(header).to.include("application/json");
+            });
+
+            test("Поле name должно быть строкой", () => {
+              expect(res.name).to.be.a('string');
+            });
+
+            test("Поле 'teamParticipantInfos' должно быть массивом и не должно быть пустым", () => {
+              const body = res.getBody();
+              expect(body.teamParticipantInfos).to.be.an('array').that.is.not.empty;
+            });
+      assertions:
+        - expression: res.status
+          operator: eq
+          value: '200'
+        - expression: res.body.id
+          operator: eq
+          value: '1'
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+request:
+  variables:
+    - name: baseUrl
+      value: http://51.250.0.63:5004
+  scripts:
+    - type: tests
+      code: |-
+        test("Ответ должен присутствовать", () => {
+          expect(res.getBody()).to.exist;
+        });
+bundled: true
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
+    presets:
+      requestType: http
+      requestUrl: '{{baseUrl}}'
+    exportedAt: '2026-07-13T17:48:46.301Z'
+    exportedUsing: Bruno
