@@ -15,7 +15,7 @@
 | 1 | Бизнес- и системный анализ | [Открыть](./submissions/01-ba-sa/) | Готово |
 | 2 | UI/UX | [Открыть](./submissions/02-ui-ux/) | Готово |
 | 3 | .NET | [Открыть](./submissions/03-dotnet/) | Готово |
-| 4 | Java | [Открыть](./submissions/04-java/) | Запланировано |
+| 4 | Java | [Открыть](./submissions/04-java/) | Готово |
 | 5 | Тестирование | [Открыть](./submissions/05-testing) | Запланировано |
 | 6 | BI | [Открыть](./submissions/06-bi/) | Запланировано |
 | 7 | JavaScript | [Открыть](./submissions/07-js/) | Запланировано |
