@@ -1,0 +1,1 @@
+Проект скопирован без изменений с репозитория https://github.com/VladislavDan/student-practice
