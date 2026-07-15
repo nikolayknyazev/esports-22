@@ -1,5 +1,6 @@
 import './Main.css';
 
+import { NewsCarousel } from '../../components/NewsCarousel/NewsCarousel';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 
 export const MainPage: React.FC = () => {
@@ -21,7 +22,7 @@ export const MainPage: React.FC = () => {
       </section>
 
       <section className="section-news">
-        news
+        <NewsCarousel />
       </section>
 
       <section className="section-tops">
