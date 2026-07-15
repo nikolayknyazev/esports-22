@@ -1,4 +1,5 @@
 :root {
+  transition: background-color 0.5s ease, color 0.5s ease;
   --color-bg-primary: #f5f7fa;
   --color-bg-secondary: #fff;
   --color-text-primary: #111217;
@@ -7,6 +8,7 @@
 }
 
 [data-theme="dark"] {
+  transition: background-color 0.5s ease, color 0.5s ease;
   --color-bg-primary: #111217;
   --color-bg-secondary: #2a2f36;
   --color-text-primary: #f5f7fa;
