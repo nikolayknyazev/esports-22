@@ -4,6 +4,7 @@ import { GameList } from '../../components/GameList/GameList';
 import { NewsCarousel } from '../../components/NewsCarousel/NewsCarousel';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 import Tops from '../../components/Tops/Tops';
+import { Hero } from '../../components/Hero/Hero';
 
 export const MainPage: React.FC = () => {
   return (
@@ -11,8 +12,8 @@ export const MainPage: React.FC = () => {
       Задание для студентов
       <ThemeSwitcher />
 
-      <section className="section-now">
-        now
+      <section className="section-hero">
+        <Hero />
       </section>
 
       <section className="section-games">
