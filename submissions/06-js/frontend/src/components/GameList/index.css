@@ -23,7 +23,7 @@
   height: 60px;
   padding: 0 12px;
 
-  background: #fff;
+  background: var(--color-bg-secondary);
   border-radius: 20px;
 
   box-shadow:

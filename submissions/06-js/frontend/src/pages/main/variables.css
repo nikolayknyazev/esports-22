@@ -18,7 +18,7 @@
 [data-theme="dark"] {
   transition: background-color 0.5s ease, color 0.5s ease;
   --color-bg-primary: #111217;
-  --color-bg-secondary: #2a2f36;
+  --color-bg-secondary: #181a1f;
   --color-text-primary: #f5f7fa;
   --color-text-secondary: #fff;
   --color-accent: #a7e600;

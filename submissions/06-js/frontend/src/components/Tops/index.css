@@ -37,7 +37,7 @@
 }
 
 .data-card-table {
-  background: var(--color-white);
+  background: var(--color-bg-secondary);
   border-radius: 20px;
   overflow: hidden;
   box-shadow:
@@ -69,7 +69,6 @@
   width: 24px;
   text-align: center;
   font-weight: 700;
-  color: #888;
 }
 
 .top-row-title img {
