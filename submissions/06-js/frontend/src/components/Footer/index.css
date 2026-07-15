@@ -1,0 +1,124 @@
+.footer {
+    background-color: var(--color-accent-gray);
+    color: var(--color-soft-white);
+    padding: 25px 0 0 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    padding: 0 25px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr 2fr;
+    gap: 40px;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    padding-right: 25px;
+    border-right: 1px solid var(--color-light-gray);
+    margin-bottom: 25px;
+}
+
+.footer-section:last-child {
+    border-right: none;
+}
+
+.footer-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 10px;
+}
+
+.footer-link {
+    color: var(--color-soft-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-white);
+}
+
+.footer-section.rights-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.footer-section.social-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-social-list {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--color-soft-white);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background-color: var(--color-accent-gray);
+}
+
+.social-link:hover {
+    color: var(--color-white);
+    transform: translateY(-3px);
+}
+
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-section {
+        text-align: center;
+        border: none;
+    }
+
+    .footer-list li:last-child a {
+        font-size: 16px;
+    }
+
+     .footer-section.rights-section {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .footer-section.social-section {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-social-list {
+        justify-content: center;
+    }
+}
