@@ -1,0 +1,15 @@
+:root {
+  --color-bg-primary: #f5f7fa;
+  --color-bg-secondary: #fff;
+  --color-text-primary: #111217;
+  --color-text-secondary: #2a2f36;
+  --color-accent: #a7e600;
+}
+
+[data-theme="dark"] {
+  --color-bg-primary: #111217;
+  --color-bg-secondary: #2a2f36;
+  --color-text-primary: #f5f7fa;
+  --color-text-secondary: #fff;
+  --color-accent: #a7e600;
+}

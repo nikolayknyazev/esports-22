@@ -1,20 +1,9 @@
+@import 'variables.css';
+
 .main-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-    color: white;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
     width: 100%;
     height: 100%;
-}
-
-.title-with-cat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.dancing-cat {
-    height: 150px;
-    width: 100px;
+    box-sizing: border-box;
 }
