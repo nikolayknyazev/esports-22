@@ -17,6 +17,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 700;
+  width: 95%;
+  margin: 0 auto;
+  font-size: 22px;
+}
+
+.data-card-link {
+  color: var(--color-light-gray);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.data-card-link:hover {
+  color: inherit;
 }
 
 .top-card-info span {
@@ -50,10 +64,13 @@
 
   padding: 14px 20px;
   min-height: 64px;
+  width: 90%;
+  margin: auto
 }
 
 .top-row:not(:last-child) {
   border-bottom: 1px solid var(--color-light-gray);
+  justify-self: left;
 }
 
 .top-row-title {
@@ -112,6 +129,8 @@
 
   padding: 14px 20px;
   min-height: 64px;
+  width: 90%;
+  margin: auto
 }
 
 .schedule-row:not(:last-child) {
