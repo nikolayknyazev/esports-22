@@ -9,11 +9,13 @@ import {TeamCardPage} from '../../pages/teams/teamCard';
 import {TournamentInfoPage} from '../../pages/tournamentInfo';
 import {TournamentsPage} from '../../pages/tournaments';
 import { Footer } from '../Footer';
+import { Header } from '../Header';
 
 export const AppLayout = () => {
     return (
         <Layout style={{minHeight: '100vh'}}>
             <Layout>
+                <Header />
                 <Layout.Content>
                     <Routes>
                         <Route index element={<MainPage/>}/>

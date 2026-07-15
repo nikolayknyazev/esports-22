@@ -8,10 +8,7 @@ import { Hero } from '../../components/Hero/Hero';
 
 export const MainPage: React.FC = () => {
   return (
-    <div className="main-page">
-      Задание для студентов
-      <ThemeSwitcher />
-
+    <main className="main-page">
       <section className="section-hero">
         <Hero />
       </section>
@@ -35,6 +32,6 @@ export const MainPage: React.FC = () => {
       <section className="section-sub">
         subscribe
       </section>
-    </div>
+    </main>
   );
 };
