@@ -3,6 +3,7 @@ import './Main.css';
 import { GameList } from '../../components/GameList/GameList';
 import { NewsCarousel } from '../../components/NewsCarousel/NewsCarousel';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
+import Tops from '../../components/Tops/Tops';
 
 export const MainPage: React.FC = () => {
   return (
@@ -27,7 +28,7 @@ export const MainPage: React.FC = () => {
       </section>
 
       <section className="section-tops">
-
+        <Tops />
       </section>
 
       <section className="section-sub">
