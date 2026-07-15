@@ -8,3 +8,27 @@
     min-height: 100vh;
     box-sizing: border-box;
 }
+
+.section-now, .section-today, .section-tops, .section-sub {
+    margin: 0 25px;
+}
+
+.section-games {
+    margin: 0 38px;
+}
+
+.section-today {
+
+}
+
+.section-news {
+    width: 100%;
+}
+
+.section-tops {
+
+}
+
+.section-sub {
+
+}
