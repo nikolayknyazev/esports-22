@@ -17,6 +17,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 700;
+  width: 95%;
+  margin: 0 auto;
+  font-size: 22px;
+}
+
+.data-card-link {
+  color: var(--color-light-gray);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.data-card-link:hover {
+  color: inherit;
 }
 
 .top-card-info span {
@@ -37,12 +51,10 @@
 }
 
 .data-card-table {
-  background: var(--color-white);
-  border-radius: 20px;
+  background: var(--color-bg-secondary);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--color-stroke);
 }
 
 .top-row {
@@ -52,10 +64,13 @@
 
   padding: 14px 20px;
   min-height: 64px;
+  width: 90%;
+  margin: auto
 }
 
 .top-row:not(:last-child) {
   border-bottom: 1px solid var(--color-light-gray);
+  justify-self: left;
 }
 
 .top-row-title {
@@ -69,7 +84,6 @@
   width: 24px;
   text-align: center;
   font-weight: 700;
-  color: #888;
 }
 
 .top-row-title img {
@@ -115,6 +129,8 @@
 
   padding: 14px 20px;
   min-height: 64px;
+  width: 90%;
+  margin: auto
 }
 
 .schedule-row:not(:last-child) {

@@ -9,8 +9,13 @@
     box-sizing: border-box;
 }
 
-.section-now, .section-today, .section-tops, .section-sub {
+.section-hero, .section-today, .section-tops, .section-sub {
     margin: 0 25px;
+}
+
+.section-hero {
+    padding-top: 25px;
+    margin-bottom: 37px;
 }
 
 .section-games {
@@ -18,15 +23,16 @@
 }
 
 .section-today {
-
+    margin: 31px 0;
 }
 
 .section-news {
     width: 100%;
+    margin-bottom: 31px;
 }
 
 .section-tops {
-
+    margin-bottom: 31px;
 }
 
 .section-sub {

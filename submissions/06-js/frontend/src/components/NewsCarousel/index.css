@@ -36,12 +36,10 @@
   flex: 0 0 300px;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 20px;
+  background: var(--color-bg-secondary);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--color-stroke);
   transition: transform 0.2s ease;
   cursor: pointer;
 }

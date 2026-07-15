@@ -1,8 +1,30 @@
+import { useEffect, useState } from 'react';
 import './index.css';
 
 import { Link } from 'react-router-dom';
 
 export const Footer = () => {
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    const updateDate = () => {
+      const now = new Date();
+      const formatted = now.toLocaleString('ru-RU', {
+        day: 'numeric',
+        month: 'numeric',
+        year: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      setCurrentDate(formatted);
+    }
+
+    updateDate();
+    const interval = setInterval(updateDate, 1000);
+    return () => clearInterval(interval);
+  }, [])
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -17,7 +39,7 @@ export const Footer = () => {
               <path d="M58.2627 57.1591L53.3229 54.0541L29.8723 68.7907L6.421 54.0541L1.48117 57.1591L29.8723 75L58.2627 57.1591Z" fill="#A7E600"/>
             </svg>
           </Link>
-          <p>© {new Date().getFullYear()} CSP. Все права защищены.</p>
+          <p>© CSP. Все права защищены.<br />{currentDate}</p>
         </div>
 
         <div className="footer-section">

@@ -21,7 +21,7 @@ const DataCard = ({
         <span>{title}</span>
 
         {linkTo && (
-          <Link to={linkTo}>
+          <Link className="data-card-link" to={linkTo}>
             {linkText} →
           </Link>
         )}

@@ -4,15 +4,13 @@ import { GameList } from '../../components/GameList/GameList';
 import { NewsCarousel } from '../../components/NewsCarousel/NewsCarousel';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 import Tops from '../../components/Tops/Tops';
+import { Hero } from '../../components/Hero/Hero';
 
 export const MainPage: React.FC = () => {
   return (
-    <div className="main-page">
-      Задание для студентов
-      <ThemeSwitcher />
-
-      <section className="section-now">
-        now
+    <main className="main-page">
+      <section className="section-hero">
+        <Hero />
       </section>
 
       <section className="section-games">
@@ -34,6 +32,6 @@ export const MainPage: React.FC = () => {
       <section className="section-sub">
         subscribe
       </section>
-    </div>
+    </main>
   );
 };
