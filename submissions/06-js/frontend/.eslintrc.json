@@ -60,7 +60,7 @@
     "react/static-property-placement": 0,
     "react/sort-comp": 0,
     "simple-import-sort/imports": [
-      "error"
+      "warn"
     ],
     "@typescript-eslint/no-use-before-define": [
       "warn",
