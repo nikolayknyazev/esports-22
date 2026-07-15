@@ -5,7 +5,7 @@
   width: 100%;
   background: var(--color-bg-secondary);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid var(--color-stroke);
   animation: headerAppear .35s ease;
 }
 
