@@ -18,7 +18,6 @@
 | 4 | Java | [Открыть](./submissions/04-java/) | Готово |
 | 5 | Тестирование | [Открыть](./submissions/05-testing) | Готово |
 | 6 | JavaScript | [Открыть](./submissions/06-js/) | Запланировано |
-| 7 | DevOps | [Открыть](./submissions/07-devops/) | Запланировано |
 
 ## Структура репозитория
 
