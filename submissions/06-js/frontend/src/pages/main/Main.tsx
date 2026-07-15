@@ -1,5 +1,6 @@
 import './Main.css';
 
+import { GameList } from '../../components/GameList/GameList';
 import { NewsCarousel } from '../../components/NewsCarousel/NewsCarousel';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 
@@ -14,7 +15,7 @@ export const MainPage: React.FC = () => {
       </section>
 
       <section className="section-games">
-        games
+        <GameList />
       </section>
 
       <section className="section-today">

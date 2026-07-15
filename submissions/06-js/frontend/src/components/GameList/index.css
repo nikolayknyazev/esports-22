@@ -1,0 +1,72 @@
+.games {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.games-list {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.game-card {
+  flex: 0 0 180px;
+  min-width: 180px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 60px;
+  padding: 0 12px;
+
+  background: #fff;
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.game-card-image {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.game-card-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.games-all-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  margin-right: 60px;
+  flex-shrink: 0;
+}
+
+.games-all-link span {
+  position: sticky;
+  top: 50%;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.games-all-link span:hover {
+  opacity: 0.7;
+}
