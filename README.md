@@ -17,7 +17,7 @@
 | 3 | .NET | [Открыть](./submissions/03-dotnet/) | Готово |
 | 4 | Java | [Открыть](./submissions/04-java/) | Готово |
 | 5 | Тестирование | [Открыть](./submissions/05-testing) | Готово |
-| 6 | JavaScript | [Открыть](./submissions/06-js/) | Запланировано |
+| 6 | JavaScript | [Открыть](./submissions/06-js/) | Готово |
 
 ## Структура репозитория
 
