@@ -126,6 +126,8 @@
 
 @media (max-width: 900px) {
     .footer-container {
+        padding-right: 40px;
+        padding-left: 40px;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         row-gap: 32px;
     }
@@ -229,4 +231,12 @@
     height: auto;
     display: block;
   width: 173px;
+}
+
+@media (max-width: 768px) {
+  .footer-section.social-section {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 }

@@ -42,7 +42,7 @@
   position: absolute;
   top: 50%;
   left: 0;
-  width: 104px;
+  width: 173px;
   height: auto;
   display: block;
   transform: translateY(-50%);
@@ -183,7 +183,7 @@
 
   .header-logo,
   .header-logo-image {
-    width: 92px;
+    width: 128px;
   }
 
   .header-nav {
@@ -206,8 +206,13 @@
 
 @media (max-width: 500px) {
   .header-container {
-    padding-right: 24px;
-    padding-left: 24px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .header-logo,
+  .header-logo-image {
+    width: 118px;
   }
 
   .header-actions {
@@ -228,7 +233,7 @@
 
 .header-logo {
   position: relative;
-  width: 104px;
+  width: 173px;
   height: 48px;
   transition:
     opacity 0.2s ease,
@@ -237,9 +242,4 @@
   border: none;
   background: transparent;
   cursor: pointer;
-}
-
-.header-logo,
-.header-logo-image {
-  width: 173px;
 }

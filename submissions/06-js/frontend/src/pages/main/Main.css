@@ -29,11 +29,19 @@
     margin-bottom: 30px;
 }
 
+.section-today {
+    margin-bottom: 30px;
+}
+
 .section-news {
     margin-bottom: 30px;
 }
 
 .section-tops {
+    margin-bottom: 30px;
+}
+
+.section-subscription {
     margin-bottom: 0;
 }
 
@@ -59,6 +67,13 @@
         transform 0.55s ease;
 }
 
+@media (max-width: 1100px) {
+    .main-section {
+        padding-right: 32px;
+        padding-left: 32px;
+    }
+}
+
 @media (max-width: 768px) {
     .main-section {
         padding-right: 20px;
@@ -67,6 +82,17 @@
 
     .section-title {
         margin-left: 10px;
+    }
+
+    .section-hero {
+        padding-top: 20px;
+    }
+
+    .section-games,
+    .section-today,
+    .section-news,
+    .section-tops {
+        margin-bottom: 24px;
     }
 }
 
@@ -100,6 +126,14 @@
 
 .reveal-section:nth-of-type(4).is-visible {
   transition-delay: 0.11s;
+}
+
+.reveal-section:nth-of-type(5).is-visible {
+  transition-delay: 0.14s;
+}
+
+.reveal-section:nth-of-type(6).is-visible {
+  transition-delay: 0.17s;
 }
 
 @media (prefers-reduced-motion: reduce) {

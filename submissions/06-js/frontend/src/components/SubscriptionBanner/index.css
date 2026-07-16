@@ -1,0 +1,160 @@
+.subscription-banner {
+  width: 100%;
+  min-height: 142px;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 72px minmax(280px, 1fr) minmax(460px, 1.35fr);
+  align-items: center;
+  gap: 28px;
+  border: var(--border-thin) solid var(--color-stroke);
+  border-radius: var(--radius-card);
+  background: #171a20;
+  color: #ffffff;
+  box-shadow: var(--shadow-card);
+}
+
+.subscription-banner-icon {
+  width: 72px;
+  height: 72px;
+  display: block;
+  background: var(--color-accent-base);
+  -webkit-mask:
+    url('../../pages/main/images/trophy.svg')
+    center / contain no-repeat;
+  mask:
+    url('../../pages/main/images/trophy.svg')
+    center / contain no-repeat;
+}
+
+.subscription-banner-copy {
+  min-width: 0;
+}
+
+.subscription-banner-copy h2 {
+  max-width: 390px;
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.subscription-banner-copy p {
+  max-width: 440px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.subscription-banner-form {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  align-items: center;
+  gap: 16px;
+}
+
+.subscription-banner-input,
+.subscription-banner-button {
+  min-height: 48px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.subscription-banner-input {
+  width: 100%;
+  padding: 0 16px;
+  border: var(--border-thin) solid #3a404a;
+  outline: none;
+  background: #111217;
+  color: #ffffff;
+  transition:
+    border-color 0.2s ease;
+}
+
+.subscription-banner-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.subscription-banner-input:hover {
+  border-color: rgba(167, 230, 0, 0.65);
+}
+
+.subscription-banner-input:focus {
+  border-color: var(--color-accent-base);
+}
+
+.subscription-banner-button {
+  width: 100%;
+  padding: 0 20px;
+  border: none;
+  background: var(--color-accent-base);
+  color: #111217;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.subscription-banner-button:hover:not(:disabled) {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.subscription-banner-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.subscription-banner-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.subscription-banner-button:disabled,
+.subscription-banner-input:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+
+@media (max-width: 1050px) {
+  .subscription-banner {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .subscription-banner-form {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .subscription-banner {
+    padding: 24px;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .subscription-banner-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .subscription-banner-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subscription-banner-input,
+  .subscription-banner-button {
+    transition: none;
+  }
+
+  .subscription-banner-button:hover:not(:disabled) {
+    transform: none;
+  }
+}

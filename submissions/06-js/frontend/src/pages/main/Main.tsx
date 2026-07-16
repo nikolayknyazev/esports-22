@@ -11,6 +11,8 @@ import {
 import { GameList } from '../../components/GameList/GameList';
 import { Hero } from '../../components/Hero/Hero';
 import { NewsCarousel } from '../../components/NewsCarousel/NewsCarousel';
+import { SubscriptionBanner } from '../../components/SubscriptionBanner/SubscriptionBanner';
+import { TodayHighlights } from '../../components/TodayHighlights/TodayHighlights';
 import Tops from '../../components/Tops/Tops';
 
 interface RevealSectionProps {
@@ -118,6 +120,11 @@ export const MainPage = () => {
         <GameList />
       </RevealSection>
 
+      <RevealSection className="main-section section-today">
+        <h2 className="section-title">СЕГОДНЯ В КИБЕРСПОРТЕ</h2>
+        <TodayHighlights />
+      </RevealSection>
+
       <RevealSection className="main-section section-news">
         <h2 className="section-title">ПОСЛЕДНИЕ НОВОСТИ</h2>
         <NewsCarousel />
@@ -125,6 +132,10 @@ export const MainPage = () => {
 
       <RevealSection className="main-section section-tops">
         <Tops />
+      </RevealSection>
+
+      <RevealSection className="main-section section-subscription">
+        <SubscriptionBanner />
       </RevealSection>
     </main>
   );
