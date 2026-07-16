@@ -1,0 +1,245 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  border-bottom: var(--border-divider) solid var(--color-stroke);
+  background: var(--color-bg-secondary);
+  font-family: var(--font-primary);
+  animation: headerAppear 0.35s ease;
+}
+
+@keyframes headerAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1440px;
+  height: 96px;
+  margin: 0 auto;
+  padding: 0 75px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 220px;
+  align-items: center;
+}
+
+.header-logo:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.header-logo-image {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 173px;
+  height: auto;
+  display: block;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease;
+}
+
+.header-logo-image-light {
+  opacity: 1;
+}
+
+.header-logo-image-dark {
+  opacity: 0;
+}
+
+[data-theme='dark'] .header-logo-image-light {
+  opacity: 0;
+}
+
+[data-theme='dark'] .header-logo-image-dark {
+  opacity: 1;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+}
+
+.header-nav-link {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.header-nav-link:hover {
+  color: var(--color-text-primary);
+  transform: translateY(-1px);
+}
+
+.header-nav-link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+  left: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.header-nav-link:hover::after,
+.header-nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.header-nav-link.active {
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+}
+
+.header-login-btn {
+  min-width: 126px;
+  height: 46px;
+  padding: 0 24px;
+  border: none;
+  border-radius: var(--radius-card);
+  background: var(--color-accent-base);
+  color: var(--color-graphite-black);
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.header-login-btn:hover {
+  filter: brightness(1.04);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.header-login-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .header-container {
+    padding-right: 32px;
+    padding-left: 32px;
+    grid-template-columns: 130px minmax(0, 1fr) 180px;
+  }
+
+  .header-nav {
+    gap: 22px;
+  }
+
+  .header-nav-link {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 850px) {
+  .header {
+    position: relative;
+  }
+
+  .header-container {
+    height: auto;
+    padding: 16px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .header-logo,
+  .header-logo-image {
+    width: 128px;
+  }
+
+  .header-nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .header-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .header-container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .header-logo,
+  .header-logo-image {
+    width: 118px;
+  }
+
+  .header-actions {
+    gap: 12px;
+  }
+
+  .header-login-btn {
+    min-width: 92px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .header-nav {
+    gap: 18px;
+  }
+}
+
+.header-logo {
+  position: relative;
+  width: 173px;
+  height: 48px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
