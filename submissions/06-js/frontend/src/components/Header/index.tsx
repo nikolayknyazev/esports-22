@@ -1,49 +1,66 @@
-import { Link, NavLink } from "react-router-dom";
+import './index.css';
 
-import { ThemeSwitcher } from "../ThemeSwitcher";
-
-import "./index.css";
+import logoDark from '../../pages/main/images/csp-dark.png';
+import logoLight from '../../pages/main/images/csp-light.png';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 
 const navigation = [
-  { label: "Главная", to: "/" },
-  { label: "Игроки", to: "/players" },
-  { label: "Команды", to: "/teams" },
-  { label: "Турниры", to: "/tournaments" },
-  { label: "Рейтинги", to: "/ratings" },
-  { label: "Аналитика", to: "/analytics" },
+  'Главная',
+  'Игроки',
+  'Команды',
+  'Турниры',
+  'Рейтинги',
+  'Аналитика',
 ];
 
 export const Header = () => {
+  const openMainPage = () => {
+    window.location.assign(`${process.env.PUBLIC_URL}/`);
+  };
+
   return (
     <header className="header">
       <div className="header-container">
-        <Link to="/" className="header-logo">
+        <button
+          className="header-logo"
+          type="button"
+          aria-label="Перейти на главную страницу"
+          onClick={openMainPage}
+        >
           <img
-            src="/logo.svg"
+            className="header-logo-image header-logo-image-light"
+            src={logoLight}
             alt="CSP"
           />
-        </Link>
-        <nav className="header-nav">
-          {navigation.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              className={({ isActive }) =>
-                `header-nav-link ${isActive ? "active" : ""}`
-              }
+
+          <img
+            className="header-logo-image header-logo-image-dark"
+            src={logoDark}
+            alt=""
+            aria-hidden="true"
+          />
+        </button>
+
+        <nav className="header-nav" aria-label="Основная навигация">
+          {navigation.map((item, index) => (
+            <button
+              key={item}
+              className={`header-nav-link ${index === 0 ? 'active' : ''}`}
+              type="button"
+              onClick={index === 0 ? openMainPage : undefined}
             >
-              {item.label}
-            </NavLink>
+              {item}
+            </button>
           ))}
         </nav>
 
         <div className="header-actions">
           <ThemeSwitcher />
-          <button className="header-login-btn">
+
+          <button className="header-login-btn" type="button">
             ВОЙТИ
           </button>
         </div>
-
       </div>
     </header>
   );

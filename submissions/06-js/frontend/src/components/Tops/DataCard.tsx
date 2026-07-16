@@ -1,36 +1,32 @@
 import './index.css';
 
-import { Link } from "react-router-dom"
-
 interface DataCardProps {
   title: string;
   linkText?: string;
-  linkTo?: string;
   children: React.ReactNode;
 }
 
 const DataCard = ({
   title,
   linkText,
-  linkTo,
-  children
+  children,
 }: DataCardProps) => {
   return (
-    <div className="data-card">
+    <section className="data-card">
       <div className="data-card-header">
-        <span>{title}</span>
+        <h2>{title}</h2>
 
-        {linkTo && (
-          <Link className="data-card-link" to={linkTo}>
+        {linkText && (
+          <button className="data-card-link" type="button">
             {linkText} →
-          </Link>
+          </button>
         )}
       </div>
 
       <div className="data-card-table">
         {children}
       </div>
-    </div>
+    </section>
   );
 };
 

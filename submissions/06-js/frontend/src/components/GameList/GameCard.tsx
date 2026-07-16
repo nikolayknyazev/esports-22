@@ -1,22 +1,34 @@
-import './index.css'
+import './index.css';
 
-import { GameItem } from './types'
+import { GameItem } from './types';
 
 interface GameCardProps {
   game: GameItem;
 }
 
 export const GameCard = ({ game }: GameCardProps) => {
+  const classNames = ['game-card'];
+
+  if (game.title === 'FORTNITE') {
+    classNames.push('game-card--fortnite');
+  }
+
+  if (game.title === 'LEAGUE OF LEGENDS') {
+    classNames.push('game-card--lol');
+  }
+
   return (
-    <div className="game-card">
+    <article className={classNames.join(' ')}>
       <img
         src={game.image}
-        alt={game.title}
+        alt=""
+        aria-hidden="true"
         className="game-card-image"
       />
+
       <h3 className="game-card-title">
         {game.title}
       </h3>
-    </div>
-  )
-}
+    </article>
+  );
+};

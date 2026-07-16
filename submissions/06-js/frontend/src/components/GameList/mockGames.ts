@@ -1,34 +1,40 @@
-import { GameItem } from "./types";
+import apexIcon from '../../pages/main/images/apex.png';
+import cs2Icon from '../../pages/main/images/cs2.png';
+import dota2Icon from '../../pages/main/images/dota2.png';
+import fortniteIcon from '../../pages/main/images/fortnite.png';
+import lolIcon from '../../pages/main/images/lol.png';
+import valorantIcon from '../../pages/main/images/valorant.png';
+import { GameItem } from './types';
 
 export const mockGames: GameItem[] = [
   {
     id: 1,
-    image: '',
-    title: 'CS2'
+    image: cs2Icon,
+    title: 'CS2',
   },
   {
     id: 2,
-    image: '',
-    title: 'DOTA 2'
+    image: dota2Icon,
+    title: 'DOTA 2',
   },
   {
     id: 3,
-    image: '',
-    title: 'VALORANT'
+    image: valorantIcon,
+    title: 'VALORANT',
   },
   {
     id: 4,
-    image: '',
-    title: 'LEAGUE OF LEGENDS'
+    image: lolIcon,
+    title: 'LEAGUE OF LEGENDS',
   },
   {
     id: 5,
-    image: '',
-    title: 'APEX LEGENDS'
+    image: apexIcon,
+    title: 'APEX LEGENDS',
   },
   {
     id: 6,
-    image: '',
-    title: 'FORTNITE'
+    image: fortniteIcon,
+    title: 'FORTNITE',
   },
 ];

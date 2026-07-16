@@ -1,7 +1,7 @@
 import './index.css';
 
-import { mockNews } from "./mockNews";
-import { NewsCard } from "./NewsCard";
+import { mockNews } from './mockNews';
+import { NewsCard } from './NewsCard';
 
 export const NewsCarousel = () => {
   return (
@@ -10,10 +10,10 @@ export const NewsCarousel = () => {
         {mockNews.map((news) => (
           <NewsCard key={news.id} news={news} />
         ))}
-      </div>
 
-      <div className="news-all-link">
-        <span>Все новости →</span>
+        <button className="news-all-link" type="button">
+          Все новости →
+        </button>
       </div>
     </div>
   );

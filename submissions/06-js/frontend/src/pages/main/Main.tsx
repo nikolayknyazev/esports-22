@@ -1,37 +1,131 @@
 import './Main.css';
 
-import { GameList } from '../../components/GameList/GameList';
-import { NewsCarousel } from '../../components/NewsCarousel/NewsCarousel';
-import { ThemeSwitcher } from '../../components/ThemeSwitcher';
-import Tops from '../../components/Tops/Tops';
-import { Hero } from '../../components/Hero/Hero';
+import {
+  ReactNode,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
-export const MainPage: React.FC = () => {
+import { GameList } from '../../components/GameList/GameList';
+import { Hero } from '../../components/Hero/Hero';
+import { NewsCarousel } from '../../components/NewsCarousel/NewsCarousel';
+import Tops from '../../components/Tops/Tops';
+
+interface RevealSectionProps {
+  className: string;
+  children: ReactNode;
+}
+
+const RevealSection = ({
+  className,
+  children,
+}: RevealSectionProps) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) {
+      return;
+    }
+
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        setIsVisible(true);
+        observer.disconnect();
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -35px',
+      },
+    );
+
+    let firstFrame = 0;
+    let secondFrame = 0;
+
+    firstFrame = window.requestAnimationFrame(() => {
+      secondFrame = window.requestAnimationFrame(() => {
+        observer.observe(section);
+      });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(firstFrame);
+      window.cancelAnimationFrame(secondFrame);
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className={`${className} reveal-section ${
+        isVisible ? 'is-visible' : ''
+      }`}
+    >
+      {children}
+    </section>
+  );
+};
+
+export const MainPage = () => {
+  useLayoutEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+
+    window.history.scrollRestoration = 'manual';
+
+    const resetScroll = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto',
+      });
+    };
+
+    resetScroll();
+
+    const frame = window.requestAnimationFrame(resetScroll);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
   return (
     <main className="main-page">
-      <section className="section-hero">
+      <RevealSection className="main-section section-hero">
         <Hero />
-      </section>
+      </RevealSection>
 
-      <section className="section-games">
+      <RevealSection className="main-section section-games">
         <GameList />
-      </section>
+      </RevealSection>
 
-      <section className="section-today">
-        today
-      </section>
-
-      <section className="section-news">
+      <RevealSection className="main-section section-news">
+        <h2 className="section-title">ПОСЛЕДНИЕ НОВОСТИ</h2>
         <NewsCarousel />
-      </section>
+      </RevealSection>
 
-      <section className="section-tops">
+      <RevealSection className="main-section section-tops">
         <Tops />
-      </section>
-
-      <section className="section-sub">
-        subscribe
-      </section>
+      </RevealSection>
     </main>
   );
 };

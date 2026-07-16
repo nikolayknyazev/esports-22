@@ -1,69 +1,131 @@
 .games {
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
+  gap: 22px;
 }
 
 .games-list {
-  flex: 1;
-  display: flex;
-  gap: 12px;
   min-width: 0;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .game-card {
-  flex: 0 0 180px;
-  min-width: 180px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  height: 60px;
+  min-width: 0;
+  height: 58px;
   padding: 0 12px;
-
-  background: var(--color-bg-secondary);
-  border-radius: 20px;
-  border: 1px solid var(--color-stroke);
-}
-
-.game-card-image {
-  width: 35px;
-  height: 35px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.game-card-title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.games-all-link {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 150px;
-  margin-right: 60px;
-  flex-shrink: 0;
-}
-
-.games-all-link span {
-  position: sticky;
-  top: 50%;
-  font-size: 18px;
-  font-weight: 600;
+  gap: 9px;
+  overflow: hidden;
+  border: var(--border-thin) solid var(--color-stroke);
+  border-radius: var(--radius-card);
+  background: var(--color-bg-secondary);
+  box-shadow: var(--shadow-card);
   cursor: pointer;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.games-all-link span:hover {
-  opacity: 0.7;
+.game-card-image {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: filter 0.35s ease;
+}
+
+.game-card-title {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  line-height: 1.15;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.game-card--lol {
+  gap: 7px;
+}
+
+.game-card--lol .game-card-title {
+  max-width: 92px;
+  text-align: left;
+}
+
+.game-card--lol .game-card-image {
+  margin-left: -2px;
+}
+
+[data-theme='dark'] .game-card--fortnite .game-card-image {
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(98%)
+    sepia(4%)
+    saturate(134%)
+    hue-rotate(177deg)
+    brightness(101%)
+    contrast(94%);
+}
+
+.games-all-link {
+  min-width: 118px;
+  margin-right: 12.5px;
+  padding: 0 4px;
+  border: none;
+  background: transparent;
+  color: var(--color-arrow-link);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.games-all-link:hover {
+  color: var(--color-accent);
+  transform: translateX(3px);
+}
+
+@media (max-width: 1100px) {
+  .games {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .games-list {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(150px, 1fr);
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-stroke) transparent;
+  }
+
+  .games-all-link {
+    min-width: 0;
+    justify-self: end;
+  }
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  border-color: transparent;
+  box-shadow:
+    inset 0 0 0 var(--hover-border-width) var(--color-accent),
+    var(--shadow-card-hover);
 }

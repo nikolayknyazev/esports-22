@@ -1,0 +1,12 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-primary);
+}
+
+.app-layout-content {
+  flex: 1;
+  background: var(--color-bg-primary);
+  transition: background-color 0.3s ease;
+}

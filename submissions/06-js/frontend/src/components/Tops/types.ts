@@ -1,5 +1,3 @@
-import { ElementType } from "react";
-
 export type ArrowType = 'up' | 'down' | 'neutral';
 
 export interface TopItem {
@@ -12,7 +10,7 @@ export interface TopItem {
 
 export interface ScheduleItem {
   id: number;
-  icon: any; // убрать подумаьт
+  icon: string;
   title: string;
   specialDate: string;
 }
